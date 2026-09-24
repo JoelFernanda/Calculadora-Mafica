@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gringotts Finance ⚡ Grifinória</title>
+<title>Finanças Fefe ✨</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap');
 
@@ -1022,9 +1022,67 @@ footer{
     transition-duration:.01ms!important;
   }
 }
+
+/* LOGIN FINANÇAS FEFE */
+#loginScreen{
+  position:fixed; inset:0; z-index:20000; display:flex; align-items:center; justify-content:center;
+  padding:22px; background:
+    radial-gradient(circle at 50% 8%,rgba(201,162,39,.20),transparent 35%),
+    radial-gradient(circle at 50% 110%,rgba(122,0,0,.55),transparent 58%),
+    linear-gradient(180deg,#190909 0%,#090504 100%);
+}
+#loginScreen.oculta{display:none}
+.login-card{
+  width:min(100%,380px); padding:28px 22px 24px; text-align:center;
+  border:1px solid rgba(213,181,61,.72); border-radius:20px;
+  background:linear-gradient(145deg,rgba(46,36,18,.97),rgba(13,14,13,.98));
+  box-shadow:0 18px 60px rgba(0,0,0,.72),0 0 28px rgba(201,162,39,.18);
+}
+.login-icon{width:92px;height:92px;object-fit:cover;border-radius:23px;margin:0 auto 14px;box-shadow:0 0 25px rgba(255,213,74,.28)}
+.login-card h1{font-family:Cinzel,serif;color:#f1d56d;font-size:24px;letter-spacing:1.2px;margin-bottom:5px}
+.login-card p{color:#bfb28e;font-size:12px;margin-bottom:20px}
+.login-field{text-align:left;margin:10px 0}
+.login-field label{display:block;color:#e8d48b;font-size:11px;font-weight:bold;letter-spacing:.7px;margin-bottom:5px}
+.login-field input{width:100%;padding:12px 13px;border:1px solid #76601e;border-radius:9px;background:rgba(7,9,9,.88);color:#fff4c8;font:500 15px Roboto,Arial,sans-serif;outline:none}
+.login-field input:focus{border-color:#f0d15c;box-shadow:0 0 10px rgba(240,209,92,.22)}
+#loginButton{width:100%;margin-top:14px;padding:12px;border:1px solid #e1bd47;border-radius:9px;background:linear-gradient(135deg,#7a0000,#b98619);color:#fff8d8;font-weight:700;letter-spacing:1px;cursor:pointer}
+#loginButton:active{transform:translateY(1px)}
+#loginError{min-height:18px;margin:10px 0 0;color:#ff9d9d;font-size:12px;font-weight:700}
+.login-note{font-size:10px!important;color:#8a7f5f!important;margin:12px 0 0!important}
+
 </style>
+
+<meta name="theme-color" content="#120a09">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Finanças Fefe">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
+
+<!-- LOGIN DO APP -->
+<section id="loginScreen" aria-label="Login do Finanças Fefe">
+  <div class="login-card">
+    <img class="login-icon" src="icon-512.png" alt="Ícone do Finanças Fefe">
+    <h1>Finanças Fefe</h1>
+    <p>Entre para abrir seu cofre mágico</p>
+    <form id="loginForm" autocomplete="on">
+      <div class="login-field">
+        <label for="loginUser">LOGIN</label>
+        <input id="loginUser" name="username" type="text" autocomplete="username" placeholder="Digite seu login" required>
+      </div>
+      <div class="login-field">
+        <label for="loginPass">SENHA</label>
+        <input id="loginPass" name="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" required>
+      </div>
+      <button id="loginButton" type="submit">✨ ENTRAR ✨</button>
+      <div id="loginError" role="alert" aria-live="polite"></div>
+    </form>
+    <p class="login-note">Acesso básico para uso pessoal neste aparelho.</p>
+  </div>
+</section>
 
 <!-- TELA INICIAL — VARINHA MÁGICA -->
 <div id="telaInicial">
@@ -1212,7 +1270,7 @@ footer{
 
   <div class="app-header">
     <button class="btn-voltar" onclick="voltarInicio()">⬅ VOLTAR</button>
-    <h1 id="tituloApp">⚡ GRINGOTTS FINANCE ⚡</h1>
+    <h1 id="tituloApp">✨ FINANÇAS FEFE ✨</h1>
     <div class="header-acoes">
       <button class="btn-header limpar" onclick="limparMesAtual()" title="Apagar todos os lançamentos do mês atual">
         🧹<span class="txt-btn"> Mês</span>
@@ -1220,6 +1278,7 @@ footer{
       <button class="btn-header limpar" onclick="limparTudo()" title="Apagar TODOS os dados do app">
         💣<span class="txt-btn"> Tudo</span>
       </button>
+      <button class="btn-header" onclick="sairFinancas()" title="Sair do app">🚪<span class="txt-btn"> Sair</span></button>
     </div>
   </div>
 
@@ -1577,7 +1636,7 @@ footer{
   </div>
 
   <footer>
-    ⚡ Gringotts Finance — Grifinória 🦁<br>
+    ✨ Finanças Fefe<br>
     "Coragem, ousadia e um cofre bem guardado."
   </footer>
 </div>
@@ -2552,5 +2611,36 @@ function irParaMes(mes) {
 carregarMeses();
 atualizar();
 </script>
+
+<script>
+/* Acesso básico solicitado para o Finanças Fefe. */
+(function(){
+  const form = document.getElementById('loginForm');
+  const tela = document.getElementById('loginScreen');
+  const erro = document.getElementById('loginError');
+  const AUTORIZADO = 'financasFefeAutorizado';
+  function entrar(){ tela.classList.add('oculta'); }
+  if (sessionStorage.getItem(AUTORIZADO) === 'sim') entrar();
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    const usuario = document.getElementById('loginUser').value.trim();
+    const senha = document.getElementById('loginPass').value;
+    if (usuario === 'Fernanda' && senha === '123456') {
+      sessionStorage.setItem(AUTORIZADO, 'sim');
+      erro.textContent = '';
+      entrar();
+    } else {
+      erro.textContent = 'Login ou senha incorretos.';
+      document.getElementById('loginPass').select();
+    }
+  });
+  window.sairFinancas = function(){
+    sessionStorage.removeItem(AUTORIZADO);
+    location.reload();
+  };
+})();
+</script>
+
+<script>if ('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'));</script>
 </body>
 </html>
